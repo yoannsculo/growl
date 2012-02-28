@@ -38,6 +38,8 @@ from optparse import OptionParser
 
 import yaml
 
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 def renderTemplate(template, context):
     raise NotImplementedError('no template engine configured!')
