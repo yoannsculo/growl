@@ -48,7 +48,7 @@ def renderTemplate(template, context):
 try:
     import jinja2
 
-    jinja2_env = jinja2.Environment()
+    jinja2_env = jinja2.Environment(extensions=['jinja2.ext.loopcontrols'])
 
     def renderTemplate(template, context):
         template = template.decode("utf8")
@@ -288,7 +288,7 @@ class Site(Config):
 
     CONTEXT = AttrDict()
     IGNORE = ('_', '.')
-    ALLOW = ('.htaccess')
+    ALLOW = ('.htaccess_')
 
     def __init__(self):
         super(Site, self).__init__()
@@ -394,9 +394,8 @@ class Site(Config):
         """
 
         def ignore_filter(item):
-            for allow in self.ALLOW:
-                if item == allow:
-                    return True
+            if item == self.ALLOW:
+                return True
             for ign in self.IGNORE:
                 if item.startswith(ign):
                     return False
