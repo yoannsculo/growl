@@ -288,6 +288,7 @@ class Site(Config):
 
     CONTEXT = AttrDict()
     IGNORE = ('_', '.')
+    ALLOW = ('.htaccess')
 
     def __init__(self):
         super(Site, self).__init__()
@@ -393,6 +394,9 @@ class Site(Config):
         """
 
         def ignore_filter(item):
+            for allow in self.ALLOW:
+                if item == allow:
+                    return True
             for ign in self.IGNORE:
                 if item.startswith(ign):
                     return False
