@@ -287,7 +287,7 @@ class Site(Config):
     """
 
     CONTEXT = AttrDict()
-    IGNORE = ('_', '.')
+    IGNORE = ('_', '.', 'README.md')
     ALLOW = ('.htaccess_')
 
     def __init__(self):
