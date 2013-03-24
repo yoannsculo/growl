@@ -22,6 +22,9 @@
 def dateFormat(dt, format='%Y-%m-%d'):
     return dt.strftime(format)
 
+@templateFilter
+def yearFormat(dt, format='%Y'):
+    return dt.strftime(format)
 
 @templateFilter
 def xmldatetime(dt):
